@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AppLoading from 'expo-app-loading';
-import { Text, Image } from 'react-native';
-import { Asset, useAssets } from 'expo-asset';
+import { useAssets } from 'expo-asset';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
@@ -14,7 +13,9 @@ export default function App() {
   if (!assets || !loaded) {
     return <AppLoading />;
   }
-  return <NavigationContainer>
-    <Tabs/>
-  </NavigationContainer>;
+  return (
+    <NavigationContainer>
+      <Tabs />
+    </NavigationContainer>
+  );
 }
