@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, useColorScheme } from 'react-native';
+import { useColorScheme } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Movies from '../screens/Movies';
 import Tv from '../screens/Tv';

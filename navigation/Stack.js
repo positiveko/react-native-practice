@@ -13,13 +13,16 @@ const ScreenTwo = ({ navigation: { navigate } }) => (
     <Text>go to three</Text>
   </TouchableOpacity>
 );
-const ScreenThree = ({ navigation: { goBack, setOptions } }) => (
+const ScreenThree = ({ navigation: { goBack, setOptions, navigate } }) => (
   <>
     <TouchableOpacity onPress={() => goBack()}>
       <Text>go back</Text>
     </TouchableOpacity>
     <TouchableOpacity onPress={() => setOptions({ title: '❤️' })}>
       <Text>Change title</Text>
+    </TouchableOpacity>
+    <TouchableOpacity onPress={() => navigate('Tabs', { screen: 'Search' })}>
+      <Text>Go to search</Text>
     </TouchableOpacity>
   </>
 );
@@ -28,8 +31,6 @@ const NativeStack = createNativeStackNavigator();
 const Stack = () => (
   <NativeStack.Navigator
     screenOptions={{
-      presentation: 'modal',
-      animation: 'flip',
       headerTintColor: YELLOW_COLOR,
       headerBackTitleVisible: false,
     }}>
