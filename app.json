@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "mooovies-app",
+    "slug": "mooovies-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "mooovies-app"
+}
