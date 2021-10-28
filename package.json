@@ -1,8 +1,8 @@
 {
   "main": "index.js",
   "scripts": {
-    "android": "expo run:android",
-    "ios": "expo run:ios",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start"
   },
