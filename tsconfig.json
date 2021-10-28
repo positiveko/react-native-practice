@@ -5,18 +5,26 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react",
-    "lib": ["es6"],
+    "lib": [
+      "es6"
+    ],
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
-    "target": "esnext",
-    "baseUrl": "./"
+    "target": "esnext"
   },
-  "types": ["jest", "styled-components-react-native"],
+  "typeRoots": [
+    "./types"
+  ],
+  "types": [
+    "jest",
+    "styled-components-react-native"
+  ],
   "exclude": [
     "node_modules",
     "babel.config.js",
     "metro.config.js",
     "jest.config.js"
-  ]
+  ],
+  "extends": "expo/tsconfig.base"
 }

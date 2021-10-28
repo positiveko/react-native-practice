@@ -12,6 +12,7 @@
     "@react-navigation/native-stack": "^6.2.5",
     "expo": "~43.0.0",
     "expo-app-loading": "^1.2.1",
+    "expo-blur": "~10.0.3",
     "expo-font": "~10.0.3",
     "expo-splash-screen": "~0.13.3",
     "expo-status-bar": "~1.1.0",
@@ -19,11 +20,13 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.2",
+    "react-native-dotenv": "^3.2.0",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-reanimated": "~2.2.0",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.8.0",
     "react-native-web": "0.17.1",
+    "react-native-web-swiper": "^2.2.1",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
@@ -34,6 +37,7 @@
     "@types/react-test-renderer": "^17.0.1",
     "@types/styled-components": "^5.1.15",
     "@types/styled-components-react-native": "^5.1.2",
+    "@types/react-native-dotenv": "^0.2.0",
     "babel-plugin-styled-components": "^1.13.3",
     "typescript": "^4.4.4"
   },

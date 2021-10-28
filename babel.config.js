@@ -5,6 +5,12 @@ module.exports = function (api) {
     plugins: [
       'react-native-reanimated/plugin',
       'babel-plugin-styled-components',
+      [
+        "module:react-native-dotenv",
+        {
+          moduleName: "react-native-dotenv",
+        },
+      ],
     ],
   };
 };
