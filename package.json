@@ -28,6 +28,7 @@
     "react-native-swiper": "^1.6.0",
     "react-native-web": "0.17.1",
     "react-native-web-swiper": "^2.2.1",
+    "react-query": "^3.29.0",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
