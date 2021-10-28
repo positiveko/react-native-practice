@@ -9,8 +9,10 @@
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "baseUrl": "./"
   },
+  "types": ["jest", "styled-components-react-native"],
   "exclude": [
     "node_modules",
     "babel.config.js",

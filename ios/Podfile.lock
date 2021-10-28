@@ -486,22 +486,22 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
-  EXApplication: 0e15240e4d125b62f1cae48759ffbbd32b9286a6
-  EXConstants: 6d585d93723b18d7a8c283591a335609e3bc153e
-  EXErrorRecovery: ac2622400a32be84604591f70d0efff416e4b9a2
-  EXFileSystem: 99aac7962c11c680681819dd9cbca24e20e5b1e7
-  EXFont: 2e1c6fe726d008a039db80df95f48b4921b7fe59
-  EXJSONUtils: f515cf71710855d7ba5bfc6752af3b9a6f6aad01
-  EXKeepAwake: 8aa32396a5972d26e75e538603aad0f032396503
-  EXManifests: 50e42e01335df4e54109dee7be5a91bfd37347db
-  Expo: cb542da0f7c8565a58231488066262f079eb1831
-  ExpoModulesCore: 5b6115660c3400f019f75093c061ae0d8c690f8a
-  EXSplashScreen: 68390ddb65a5def66ce8cf46a1e14a9b33cdac70
-  EXStructuredHeaders: 873e7f329c2f6279c1b1e0229df59c9861560b53
-  EXUpdates: 964b7932e8fb332403170cb7cd438f48f6d6c64e
-  EXUpdatesInterface: e1c01b4f5ec76bd1d6cc714938f9edf5ef6379b9
+  EXApplication: 4e001850816f38eb4812cb02fe059974daeafe4d
+  EXConstants: 66361ff23b5ea7eae3684ffad0f15955c23b5134
+  EXErrorRecovery: 0e088d138e44f0e4a24655040e7f7c34ede8cc06
+  EXFileSystem: 624eef3e3a853f19cc0c26eaffab1519001d8c35
+  EXFont: 6e8f77d9741f5cd83f710adbf26ebb57a036283b
+  EXJSONUtils: bafb27ed20417c018d942f334d969102e67be7e5
+  EXKeepAwake: ca4071fb63b89a70b13d33f6147cf9b5433c122a
+  EXManifests: 15831e369de4e989f9cfe8c3321303f26745e41d
+  Expo: 7189432f4b0ec6f99ba162b8a884d5e8e4591b99
+  ExpoModulesCore: a9be6ee9cb9740ff10261d7585fc5a19be6d54ef
+  EXSplashScreen: cb494b17be9d4c81cc97728bd9f3c399ee62863b
+  EXStructuredHeaders: 7d4a100b8321c6db341e91e730949558d4a48818
+  EXUpdates: 916ffc4f03d87fae6b1c5f24ce6302c93e26f9e4
+  EXUpdatesInterface: 2413d24feea140d6b30f6c73ec7f7e0281d3594a
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
-  FBReactNativeSpec: 23fad3d6a71e5f777744da1b27ea4d718537cb06
+  FBReactNativeSpec: 82d1e381cf3e13c3f2b3e62e450ff6efce05ca7b
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: 6d3e854f0e7260a648badd0d44fc364bc9da9728
@@ -514,7 +514,7 @@ SPEC CHECKSUMS:
   React-jsi: 67747b9722f6dab2ffe15b011bcf6b3f2c3f1427
   React-jsiexecutor: 80c46bd381fd06e418e0d4f53672dc1d1945c4c3
   React-jsinspector: cc614ec18a9ca96fd275100c16d74d62ee11f0ae
-  react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
+  react-native-safe-area-context: 5cf05f49df9d17261e40e518481f2e334c6cd4b5
   React-perflogger: 25373e382fed75ce768a443822f07098a15ab737
   React-RCTActionSheet: af7796ba49ffe4ca92e7277a5d992d37203f7da5
   React-RCTAnimation: 6a2e76ab50c6f25b428d81b76a5a45351c4d77aa
