@@ -17,7 +17,7 @@ const Stack = () => {
       screenOptions={{
         headerBackTitleVisible: false,
         headerStyle: {
-          backgroundColor: isDark ? BLACK_COLOR : 'white',
+          backgroundColor: isDark ? '#132c30' : '#e3f3b2',
         },
         headerTitleStyle: {
           color: isDark ? 'white' : BLACK_COLOR,

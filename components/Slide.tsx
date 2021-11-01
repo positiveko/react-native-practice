@@ -43,7 +43,7 @@ const Slide: React.FC<SlideProps> = ({
 
   return (
     <TouchableWithoutFeedback onPress={goToDetail}>
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, borderBottomColor: 'black', borderBottomWidth: 1.5 }}>
         <BgImg
           style={StyleSheet.absoluteFill}
           source={{ uri: makeImgPath(backdropPath) }}

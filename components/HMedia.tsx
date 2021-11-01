@@ -92,7 +92,9 @@ const Release = styled.Text`
 `;
 
 const Title = styled.Text`
-  color: ${({ theme }) => theme.textColor};
+  width: 80%;
+  color: #1e272e;
   font-weight: 600;
   margin-top: 7px;
+  background-color: ${({ theme }) => theme.highlightColor};
 `;

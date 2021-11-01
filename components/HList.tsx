@@ -1,6 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
+import { VERMILLAN_COLOR } from '../colors';
 import VMedia from './VMedia';
 
 interface HListProps {
@@ -47,6 +48,8 @@ const ListContainer = styled.View`
 
 const ListTitle = styled.Text`
   color: ${({ theme }) => theme.textColor};
+  text-decoration: underline;
+  text-decoration-color: ${VERMILLAN_COLOR};
   font-size: 18px;
   font-weight: 600;
   margin-left: 30px;

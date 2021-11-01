@@ -9,7 +9,7 @@ import { Ionicons } from '@expo/vector-icons';
 import * as WebBrowser from 'expo-web-browser';
 import styled from 'styled-components/native';
 import { Movie, moviesApi, TV, tvApi } from '../api';
-import { BLACK_COLOR } from '../colors';
+import { BLACK_COLOR, VERMILLAN_COLOR } from '../colors';
 import Poster from '../components/Poster';
 import { makeImgPath } from '../utils';
 
@@ -61,7 +61,7 @@ const Detail: React.FC<DetailScreenProps> = ({
 
   const ShareButton = () => (
     <TouchableOpacity onPress={shareMedia}>
-      <Ionicons name='share-outline' color='white' size={24} />
+      <Ionicons name='share-outline' color='#949494' size={24} />
     </TouchableOpacity>
   );
 
@@ -110,10 +110,11 @@ const Detail: React.FC<DetailScreenProps> = ({
       </Header>
       <Data>
         <Overview>{params.overview}</Overview>
+        <Border />
         {isLoading ? <Loader /> : null}
         {data?.videos?.results?.map((video: { key: string; name: string }) => (
           <VideoBtn key={video.key} onPress={() => openYTLink(video.key)}>
-            <Ionicons name='logo-youtube' color='white' size={24} />
+            <Ionicons name='logo-youtube' color={VERMILLAN_COLOR} size={24} />
             <BtnText>{video.name}</BtnText>
           </VideoBtn>
         ))}
@@ -131,7 +132,7 @@ const Container = styled.ScrollView`
 const Header = styled.View`
   height: ${SCREEN_HEIGHT / 4}px;
   justify-content: flex-end;
-  padding: 0px 20px;
+  padding: 0px 20px 10px 20px;
 `;
 
 const Background = styled.Image``;
@@ -141,16 +142,20 @@ const Column = styled.View`
   width: 80%;
 `;
 const Title = styled.Text`
-  color: ${({ theme }) => theme.textColor};
+  color: #1e272e;
+  background-color: white;
+  opacity: 0.6;
   font-size: 36px;
   align-self: flex-end;
   margin-left: 15px;
   font-weight: 500;
 `;
 const Overview = styled.Text`
-  color: ${(props) => props.theme.textColor};
-  margin-top: 20px;
+  color: #1e272e;
   margin: 20px 0px;
+  padding: 15px;
+  background-color: white;
+  opacity: 0.6;
 `;
 
 const VideoBtn = styled.TouchableOpacity`
@@ -166,4 +171,10 @@ const BtnText = styled.Text`
 
 const Data = styled.View`
   padding: 0px 20px;
+`;
+
+const Border = styled.View`
+  margin-bottom: 15px;
+  border-width: 1px;
+  border-bottom-color: ${({ theme }) => theme.textColor};
 `;

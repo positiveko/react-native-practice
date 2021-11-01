@@ -82,9 +82,11 @@ export default Search;
 const Container = styled.ScrollView``;
 
 const SearchBar = styled.TextInput`
-  background-color: #e6e6e6;
-  padding: 10px 15px;
-  border-radius: 15px;
   width: 90%;
   margin: 20px auto 40px auto;
+  padding: 13px 15px;
+  border: black;
+  border-width: 1.2px;
+  border-radius: 15px;
+  background-color: #e6e6e6;
 `;

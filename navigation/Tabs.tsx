@@ -4,7 +4,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Movies from '../screens/Movies';
 import Tv from '../screens/Tv';
 import Search from '../screens/Search';
-import { BLACK_COLOR, DARK_GREY, LIGHT_GREY, YELLOW_COLOR } from '../colors';
+import {
+  BLACK_COLOR,
+  DARK_GREY,
+  VERMILLAN_COLOR,
+} from '../colors';
 import { Ionicons } from '@expo/vector-icons';
 
 export type TabParamList = {
@@ -22,17 +26,21 @@ const Tabs = () => {
   return (
     <Tab.Navigator
       sceneContainerStyle={{
-        backgroundColor: isDark ? BLACK_COLOR : 'white',
+        backgroundColor: isDark ? BLACK_COLOR : '#f3eae4',
       }}
       screenOptions={{
         unmountOnBlur: true,
         tabBarStyle: {
-          backgroundColor: isDark ? BLACK_COLOR : 'white',
+          borderTopWidth: 1.5,
+          borderTopColor: BLACK_COLOR,
+          backgroundColor: isDark ?'#505050' : '#f0a48a',
         },
-        tabBarActiveTintColor: isDark ? YELLOW_COLOR : BLACK_COLOR,
-        tabBarInactiveTintColor: isDark ? DARK_GREY : LIGHT_GREY,
+        tabBarActiveTintColor: isDark ? VERMILLAN_COLOR : BLACK_COLOR,
+        tabBarInactiveTintColor: isDark ? DARK_GREY : '#f1ffc7',
         headerStyle: {
-          backgroundColor: isDark ? BLACK_COLOR : 'white',
+          borderBottomWidth: 1.5,
+          borderBottomColor: BLACK_COLOR,
+          backgroundColor: isDark ? '#294a6d' : '#95b3d3',
         },
         headerTitleStyle: {
           color: isDark ? 'white' : BLACK_COLOR,

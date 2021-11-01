@@ -52,7 +52,8 @@ const Container = styled.View`
 `;
 
 const Title = styled.Text`
-  color: ${({ theme }) => theme.textColor};
+  background-color: ${({ theme }) => theme.highlightColor};
+  color: #1e272e;
   font-weight: 600;
   margin-top: 7px;
   margin-bottom: 5px;

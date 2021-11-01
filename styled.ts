@@ -1,13 +1,15 @@
 import { DefaultTheme } from 'styled-components/native';
 
 export const lightTheme: DefaultTheme = {
-  mainBgColor: '#e6e6e6',
+  mainBgColor: '#f3eae4',
   textColor: '#1e272e',
-  accentColor: 'yellow',
+  accentColor: '#f46a02',
+  highlightColor: '#ffe290',
 };
 
 export const darkTheme: DefaultTheme = {
   mainBgColor: '#1e272e',
   textColor: '#d2dae2',
-  accentColor: 'yellow',
+  accentColor: '#f46a02',
+  highlightColor: '#bea86a',
 };

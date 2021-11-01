@@ -7,6 +7,7 @@ declare module 'styled-components/native' {
     mainBgColor: string;
     textColor: string;
     accentColor: string;
+    highlightColor: string;
   }
 }
 
@@ -14,4 +15,5 @@ export default interface DefaultTheme {
   mainBgColor: string;
   textColor: string;
   accentColor: string;
+  highlightColor: string;
 }
