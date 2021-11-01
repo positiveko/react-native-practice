@@ -1,12 +1,13 @@
-import React from 'react';
-import { ActivityIndicator, Dimensions, FlatList } from 'react-native';
+import React, { useState } from 'react';
+import { Dimensions, FlatList } from 'react-native';
 import { useQuery, useQueryClient } from 'react-query';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Swiper from 'react-native-swiper';
 import styled from 'styled-components/native';
 import Slide from '../components/Slide';
-import VMedia from '../components/VMedia';
+import Loader from '../components/Loader';
 import HMedia from '../components/HMedia';
+import HList from '../components/HList';
 import { MovieResponse, moviesApi } from '../api';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
@@ -14,34 +15,24 @@ const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 const Movies: React.FC<NativeStackScreenProps<any, 'Movies'>> = () => {
   const queryClient = useQueryClient();
 
-  const {
-    isLoading: nowPlayingLoading,
-    data: nowPlayingData,
-    isRefetching: isRefetchingNowPlaying,
-  } = useQuery<MovieResponse>(['movies', 'nowPlaying'], moviesApi.nowPlaying);
-  const {
-    isLoading: upcomingLoading,
-    data: upcomingData,
-    isRefetching: isRefetchingUpcoming,
-  } = useQuery<MovieResponse>(['movies', 'upcoming'], moviesApi.upcoming);
-  const {
-    isLoading: trendingLoading,
-    data: trendingData,
-    isRefetching: isRefetchingTrending,
-  } = useQuery<MovieResponse>(['movies', 'trending'], moviesApi.trending);
+  const [refreshing, setRefreshing] = useState(false);
+  const { isLoading: nowPlayingLoading, data: nowPlayingData } =
+    useQuery<MovieResponse>(['movies', 'nowPlaying'], moviesApi.nowPlaying);
+  const { isLoading: upcomingLoading, data: upcomingData } =
+    useQuery<MovieResponse>(['movies', 'upcoming'], moviesApi.upcoming);
+  const { isLoading: trendingLoading, data: trendingData } =
+    useQuery<MovieResponse>(['movies', 'trending'], moviesApi.trending);
 
   const onRefresh = async () => {
-    queryClient.refetchQueries(['movies']);
+    setRefreshing(true);
+    await queryClient.refetchQueries(['movies']);
+    setRefreshing(false);
   };
 
   const loading = nowPlayingLoading || upcomingLoading || trendingLoading;
-  const refreshing =
-    isRefetchingNowPlaying || isRefetchingUpcoming || isRefetchingTrending;
 
   return loading ? (
-    <Loader>
-      <ActivityIndicator />
-    </Loader>
+    <Loader />
   ) : upcomingData ? (
     <FlatList
       onRefresh={onRefresh}
@@ -71,27 +62,9 @@ const Movies: React.FC<NativeStackScreenProps<any, 'Movies'>> = () => {
               />
             ))}
           </Swiper>
-          <ListContainer>
-            <ListTitle>Trending Movies</ListTitle>
-            {trendingData ? (
-              <FlatList
-                style={{ marginTop: 20 }}
-                horizontal
-                data={trendingData.results}
-                keyExtractor={(item) => item.id + ''}
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{ paddingHorizontal: 30 }}
-                ItemSeparatorComponent={VSeparator}
-                renderItem={({ item }) => (
-                  <VMedia
-                    posterPath={item.poster_path || ''}
-                    originalTitle={item.original_title}
-                    voteAverage={item.vote_average}
-                  />
-                )}
-              />
-            ) : null}
-          </ListContainer>
+          {trendingData ? (
+            <HList title='Trending Movies' data={trendingData.results} />
+          ) : null}
           <ComingSoonTitle>Coming soon</ComingSoonTitle>
         </>
       }
@@ -111,12 +84,6 @@ const Movies: React.FC<NativeStackScreenProps<any, 'Movies'>> = () => {
 };
 
 export default Movies;
-
-const Loader = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
 
 const ListTitle = styled.Text`
   color: white;
