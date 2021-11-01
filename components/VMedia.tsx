@@ -48,10 +48,11 @@ export default VMedia;
 
 const Container = styled.View`
   align-items: center;
+  color: ${({ theme }) => theme.textColor};
 `;
 
 const Title = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.textColor};
   font-weight: 600;
   margin-top: 7px;
   margin-bottom: 5px;

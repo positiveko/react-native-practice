@@ -6,12 +6,21 @@ import VMedia from './VMedia';
 interface HListProps {
   title: string;
   data: any[];
+  onEndReached?: () => void;
+  onEndReachedThreshold?: number;
 }
 
-const HList: React.FC<HListProps> = ({ title, data }) => (
+const HList: React.FC<HListProps> = ({
+  title,
+  data,
+  onEndReached,
+  onEndReachedThreshold = 0.4,
+}) => (
   <ListContainer>
     <ListTitle>{title}</ListTitle>
     <FlatList
+      onEndReached={onEndReached}
+      onEndReachedThreshold={onEndReachedThreshold}
       data={data}
       horizontal
       showsHorizontalScrollIndicator={false}
@@ -37,7 +46,7 @@ const ListContainer = styled.View`
 `;
 
 const ListTitle = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.textColor};
   font-size: 18px;
   font-weight: 600;
   margin-left: 30px;

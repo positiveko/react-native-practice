@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Dimensions, FlatList } from 'react-native';
-import { useQuery, useQueryClient } from 'react-query';
+import { useInfiniteQuery, useQuery, useQueryClient } from 'react-query';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Swiper from 'react-native-swiper';
 import styled from 'styled-components/native';
@@ -18,8 +18,16 @@ const Movies: React.FC<NativeStackScreenProps<any, 'Movies'>> = () => {
   const [refreshing, setRefreshing] = useState(false);
   const { isLoading: nowPlayingLoading, data: nowPlayingData } =
     useQuery<MovieResponse>(['movies', 'nowPlaying'], moviesApi.nowPlaying);
-  const { isLoading: upcomingLoading, data: upcomingData } =
-    useQuery<MovieResponse>(['movies', 'upcoming'], moviesApi.upcoming);
+  const {
+    isLoading: upcomingLoading,
+    data: upcomingData,
+    fetchNextPage,
+  } = useInfiniteQuery(['movies', 'upcoming'], moviesApi.upcoming, {
+    getNextPageParam: (currentPage) => {
+      const nextPage = currentPage.page + 1;
+      return nextPage > currentPage.total_pages ? null : nextPage;
+    },
+  });
   const { isLoading: trendingLoading, data: trendingData } =
     useQuery<MovieResponse>(['movies', 'trending'], moviesApi.trending);
 
@@ -29,12 +37,18 @@ const Movies: React.FC<NativeStackScreenProps<any, 'Movies'>> = () => {
     setRefreshing(false);
   };
 
+  const loadMore = () => {
+    fetchNextPage();
+  };
+
   const loading = nowPlayingLoading || upcomingLoading || trendingLoading;
 
   return loading ? (
     <Loader />
   ) : upcomingData ? (
     <FlatList
+      onEndReached={loadMore}
+      onEndReachedThreshold={0.4}
       onRefresh={onRefresh}
       refreshing={refreshing}
       ListHeaderComponent={
@@ -69,7 +83,7 @@ const Movies: React.FC<NativeStackScreenProps<any, 'Movies'>> = () => {
           <ComingSoonTitle>Coming soon</ComingSoonTitle>
         </>
       }
-      data={upcomingData.results}
+      data={upcomingData.pages.map((page) => page.results).flat()}
       keyExtractor={(item) => item.id + ''}
       ItemSeparatorComponent={HSeparator}
       renderItem={({ item }) => (
@@ -88,7 +102,7 @@ const Movies: React.FC<NativeStackScreenProps<any, 'Movies'>> = () => {
 export default Movies;
 
 const ListTitle = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.textColor};
   font-size: 18px;
   font-weight: 600;
   margin-left: 30px;

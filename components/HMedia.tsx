@@ -78,13 +78,13 @@ const HColumn = styled.View`
 `;
 
 const Overview = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.textColor};
   opacity: 0.8;
   width: 80%;
 `;
 
 const Release = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.textColor};
   font-size: 12px;
   margin: 10px 0;
   font-weight: 500;
@@ -92,7 +92,7 @@ const Release = styled.Text`
 `;
 
 const Title = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.textColor};
   font-weight: 600;
   margin-top: 7px;
 `;

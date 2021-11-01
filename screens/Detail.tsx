@@ -71,6 +71,7 @@ const Detail: React.FC<DetailScreenProps> = ({
     });
   }, []);
 
+  // header는 새로 리렌더 되지 않기 때문에 아래와 같이 추가 필요
   useEffect(() => {
     if (data) {
       setOptions({
@@ -140,7 +141,7 @@ const Column = styled.View`
   width: 80%;
 `;
 const Title = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.textColor};
   font-size: 36px;
   align-self: flex-end;
   margin-left: 15px;
@@ -156,7 +157,7 @@ const VideoBtn = styled.TouchableOpacity`
   flex-direction: row;
 `;
 const BtnText = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.textColor};
   font-weight: 600;
   margin-bottom: 10px;
   line-height: 24px;

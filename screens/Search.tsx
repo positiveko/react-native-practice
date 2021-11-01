@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useQuery } from 'react-query';
+import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components/native';
 import { moviesApi, tvApi } from '../api';
 import HList from '../components/HList';
@@ -12,15 +12,25 @@ const Search = () => {
     isLoading: moviesLoading,
     data: moviesData,
     refetch: searchMovies,
-  } = useQuery(['searchMovies', query], moviesApi.search, {
+    fetchNextPage: fetchNextMoviesPage,
+  } = useInfiniteQuery(['searchMovies', query], moviesApi.search, {
     enabled: false,
+    getNextPageParam: (currentPage) => {
+      const nextPage = currentPage.page + 1;
+      return nextPage > currentPage.total_pages ? null : nextPage;
+    },
   });
   const {
     isLoading: tvLoading,
     data: tvData,
     refetch: searchTv,
-  } = useQuery(['searchTv', query], tvApi.search, {
+    fetchNextPage: fetchNextTvPage,
+  } = useInfiniteQuery(['searchTv', query], tvApi.search, {
     enabled: false,
+    getNextPageParam: (currentPage) => {
+      const nextPage = currentPage.page + 1;
+      return nextPage > currentPage.total_pages ? null : nextPage;
+    },
   });
 
   const onChangeText = (text: string) => setQuery(text);
@@ -31,6 +41,13 @@ const Search = () => {
     }
     searchMovies();
     searchTv();
+  };
+
+  const loadMoviesMore = () => {
+    fetchNextMoviesPage();
+  };
+  const loadTvMore = () => {
+    fetchNextTvPage();
   };
 
   return (
@@ -44,9 +61,19 @@ const Search = () => {
       />
       {moviesLoading || tvLoading ? <Loader /> : null}
       {moviesData ? (
-        <HList title='Movie Results' data={moviesData.results} />
+        <HList
+          onEndReached={loadMoviesMore}
+          title='Movie Results'
+          data={moviesData.pages.map((page) => page.results).flat()}
+        />
       ) : null}
-      {tvData ? <HList title='TV Results' data={tvData.results} /> : null}
+      {tvData ? (
+        <HList
+          onEndReached={loadTvMore}
+          title='TV Results'
+          data={tvData.pages.map((page) => page.results).flat()}
+        />
+      ) : null}
     </Container>
   );
 };
@@ -55,10 +82,9 @@ export default Search;
 const Container = styled.ScrollView``;
 
 const SearchBar = styled.TextInput`
-  background-color: white;
+  background-color: #e6e6e6;
   padding: 10px 15px;
   border-radius: 15px;
   width: 90%;
-  margin: 10px auto;
-  margin-bottom: 40px;
+  margin: 20px auto 40px auto;
 `;

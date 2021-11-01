@@ -11,6 +11,6 @@ const Votes: React.FC<VotesProps> = ({ votes }) => (
 export default Votes;
 
 const Text = styled.Text`
-  color: rgba(255, 255, 255, 0.8);
+  color: ${({ theme }) => theme.textColor};
   font-size: 10px;
 `;
