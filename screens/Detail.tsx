@@ -1,7 +1,8 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect } from 'react';
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet, Share, Platform } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useQuery } from 'react-query';
 import Loader from '../components/Loader';
 import { Ionicons } from '@expo/vector-icons';
@@ -31,11 +32,48 @@ const Detail: React.FC<DetailScreenProps> = ({
     isMovie ? moviesApi.detail : tvApi.detail
   );
 
+  const shareMedia = async () => {
+    const isAndroid = Platform.OS === 'android';
+    const homepage = isMovie
+      ? `https://www.imdb.com/title/${data.imdb_id}/`
+      : data.homepage;
+    if (isAndroid) {
+      await Share.share({
+        message: `${params.overview}\nCheck it out: ${homepage}`,
+        title:
+          'original_title' in params
+            ? params.original_title
+            : params.original_name,
+      });
+    } else {
+      await Share.share({
+        url: homepage,
+        title:
+          'original_title' in params
+            ? params.original_title
+            : params.original_name,
+      });
+    }
+  };
+  const ShareButton = () => (
+    <TouchableOpacity onPress={shareMedia}>
+      <Ionicons name='share-outline' color='white' size={24} />
+    </TouchableOpacity>
+  );
+
   useEffect(() => {
     setOptions({
       title: 'original_title' in params ? 'Movie' : 'TV Show',
     });
   }, []);
+
+  useEffect(() => {
+    if (data) {
+      setOptions({
+        headerRight: () => <ShareButton />,
+      });
+    }
+  }, [data]);
 
   const openYTLink = async (videoID: string) => {
     const baseUrl = `https://m.youtube.com/watch?v=${videoID}`;
@@ -68,14 +106,12 @@ const Detail: React.FC<DetailScreenProps> = ({
       <Data>
         <Overview>{params.overview}</Overview>
         {isLoading ? <Loader /> : null}
-        {data?.videos?.results?.map((video) =>
-          video.site === 'YouTube' ? (
-            <VideoBtn key={video.key} onPress={() => openYTLink(video.key)}>
-              <Ionicons name='logo-youtube' color='white' size={24} />
-              <BtnText>{video.name}</BtnText>
-            </VideoBtn>
-          ) : null
-        )}
+        {data?.videos?.results?.map((video) => (
+          <VideoBtn key={video.key} onPress={() => openYTLink(video.key)}>
+            <Ionicons name='logo-youtube' color='white' size={24} />
+            <BtnText>{video.name}</BtnText>
+          </VideoBtn>
+        ))}
       </Data>
     </Container>
   );
