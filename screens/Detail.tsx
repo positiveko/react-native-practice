@@ -28,7 +28,7 @@ const Detail: React.FC<DetailScreenProps> = ({
   const isMovie = 'original_title' in params;
 
   const { isLoading, data } = useQuery(
-    [isMovie ? 'movies' : 'tv', params.id],
+    [isMovie ? 'movies' : 'tv', params.id] as string[],
     isMovie ? moviesApi.detail : tvApi.detail
   );
 
