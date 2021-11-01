@@ -94,16 +94,8 @@ const ListTitle = styled.Text`
   margin-left: 30px;
 `;
 
-const ListContainer = styled.View`
-  margin-bottom: 40px;
-`;
-
 const ComingSoonTitle = styled(ListTitle)`
   margin-bottom: 20px;
-`;
-
-const VSeparator = styled.View`
-  width: 20px;
 `;
 
 const HSeparator = styled.View`
