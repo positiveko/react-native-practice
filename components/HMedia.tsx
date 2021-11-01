@@ -5,6 +5,7 @@ import styled from 'styled-components/native';
 import Poster from './Poster';
 import Votes from './Votes';
 import { Movie } from '../api';
+import { StackScreenProp } from '../navigation/Root';
 
 interface HMediaProps {
   posterPath: string;
@@ -23,7 +24,7 @@ const HMedia: React.FC<HMediaProps> = ({
   voteAverage,
   fullData,
 }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackScreenProp>();
   const goToDetail = () => {
     navigation.navigate('Stack', {
       screen: 'Detail',

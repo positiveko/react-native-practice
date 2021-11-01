@@ -10,6 +10,8 @@ import { BlurView } from 'expo-blur';
 import styled from 'styled-components/native';
 import { makeImgPath } from '../utils';
 import Poster from './Poster';
+import { Movie } from '../api';
+import { StackScreenProp } from '../navigation/Root';
 
 interface SlideProps {
   backdropPath: string;
@@ -29,7 +31,7 @@ const Slide: React.FC<SlideProps> = ({
   fullData,
 }) => {
   const isDark = useColorScheme() === 'dark';
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackScreenProp>();
   const goToDetail = () => {
     navigation.navigate('Stack', {
       screen: 'Detail',

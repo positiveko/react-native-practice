@@ -7,7 +7,13 @@ import Search from '../screens/Search';
 import { BLACK_COLOR, DARK_GREY, LIGHT_GREY, YELLOW_COLOR } from '../colors';
 import { Ionicons } from '@expo/vector-icons';
 
-const Tab = createBottomTabNavigator();
+export type TabParamList = {
+  Movies: undefined;
+  TV: undefined;
+  Search: undefined;
+};
+
+const Tab = createBottomTabNavigator<TabParamList>();
 
 const Tabs = () => {
   // shift + command + a : 다크모드 변경

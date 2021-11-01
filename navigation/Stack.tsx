@@ -4,7 +4,11 @@ import { BLACK_COLOR } from '../colors';
 import Detail from '../screens/Detail';
 import { useColorScheme } from 'react-native';
 
-const NativeStack = createNativeStackNavigator();
+export type StackParamList = {
+  Detail: undefined;
+};
+
+const NativeStack = createNativeStackNavigator<StackParamList>();
 
 const Stack = () => {
   const isDark = useColorScheme() === 'dark';

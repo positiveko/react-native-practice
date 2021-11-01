@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native';
 import Poster from './Poster';
 import Votes from './Votes';
 import { Movie, TV } from '../api';
+import { StackScreenProp } from '../navigation/Root';
 
 interface VMediaProps {
   posterPath: string;
@@ -19,7 +20,7 @@ const VMedia: React.FC<VMediaProps> = ({
   voteAverage,
   fullData,
 }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackScreenProp>();
   const goToDetail = () => {
     navigation.navigate('Stack', {
       screen: 'Detail',

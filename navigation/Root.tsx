@@ -1,9 +1,19 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 import Tabs from './Tabs';
 import Stack from './Stack';
 
-const Nav = createNativeStackNavigator();
+export type RootStackParamList = {
+  Tabs: undefined;
+  Stack: {
+    screen: string;
+    params: Object;
+  };
+};
+
+export type StackScreenProp = NativeStackNavigationProp<RootStackParamList, 'Stack'>;
+
+const Nav = createNativeStackNavigator<RootStackParamList>();
 
 const Root = () => (
   <Nav.Navigator screenOptions={{ presentation: 'modal', headerShown: false }}>

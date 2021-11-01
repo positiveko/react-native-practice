@@ -37,24 +37,28 @@ const Detail: React.FC<DetailScreenProps> = ({
     const homepage = isMovie
       ? `https://www.imdb.com/title/${data.imdb_id}/`
       : data.homepage;
+
     if (isAndroid) {
-      await Share.share({
+      return await Share.share({
+        // android => message only
         message: `${params.overview}\nCheck it out: ${homepage}`,
         title:
           'original_title' in params
             ? params.original_title
             : params.original_name,
       });
-    } else {
-      await Share.share({
-        url: homepage,
-        title:
-          'original_title' in params
-            ? params.original_title
-            : params.original_name,
-      });
     }
+
+    return await Share.share({
+      // ios => url only
+      url: homepage,
+      title:
+        'original_title' in params
+          ? params.original_title
+          : params.original_name,
+    });
   };
+
   const ShareButton = () => (
     <TouchableOpacity onPress={shareMedia}>
       <Ionicons name='share-outline' color='white' size={24} />
@@ -106,7 +110,7 @@ const Detail: React.FC<DetailScreenProps> = ({
       <Data>
         <Overview>{params.overview}</Overview>
         {isLoading ? <Loader /> : null}
-        {data?.videos?.results?.map((video) => (
+        {data?.videos?.results?.map((video: { key: string; name: string }) => (
           <VideoBtn key={video.key} onPress={() => openYTLink(video.key)}>
             <Ionicons name='logo-youtube' color='white' size={24} />
             <BtnText>{video.name}</BtnText>
