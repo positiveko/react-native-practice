@@ -1,12 +1,13 @@
 import React from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
+import { Movie, TV } from '../api';
 import { VERMILLAN_COLOR } from '../colors';
 import VMedia from './VMedia';
 
 interface HListProps {
   title: string;
-  data: any[];
+  data: (Movie | TV)[];
   onEndReached?: () => void;
   onEndReachedThreshold?: number;
 }

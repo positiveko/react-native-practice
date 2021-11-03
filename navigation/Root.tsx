@@ -1,5 +1,8 @@
 import React from 'react';
-import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationProp,
+} from '@react-navigation/native-stack';
 import Tabs from './Tabs';
 import Stack from './Stack';
 
@@ -11,7 +14,7 @@ export type RootStackParamList = {
   };
 };
 
-export type StackScreenProp = NativeStackNavigationProp<RootStackParamList, 'Stack'>;
+export type StackScreenProp = NativeStackNavigationProp<RootStackParamList>;
 
 const Nav = createNativeStackNavigator<RootStackParamList>();
 
