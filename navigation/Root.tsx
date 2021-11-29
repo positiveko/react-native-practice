@@ -19,7 +19,7 @@ export type StackScreenProp = NativeStackNavigationProp<RootStackParamList>;
 const Nav = createNativeStackNavigator<RootStackParamList>();
 
 const Root = () => (
-  <Nav.Navigator screenOptions={{ presentation: 'modal', headerShown: false }}>
+  <Nav.Navigator screenOptions={{ presentation: 'card', headerShown: false }}>
     <Nav.Screen name='Tabs' component={Tabs} />
     <Nav.Screen name='Stack' component={Stack} />
   </Nav.Navigator>

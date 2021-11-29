@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList } from 'react-native';
 import styled from 'styled-components/native';
 import { Movie, TV } from '../api';
 import { VERMILLAN_COLOR } from '../colors';
@@ -31,8 +31,8 @@ const HList: React.FC<HListProps> = ({
       keyExtractor={(item) => item.id + ''}
       renderItem={({ item }) => (
         <VMedia
-          posterPath={item.poster_path}
-          originalTitle={item.original_title ?? item.original_name}
+          posterPath={item.poster_path ?? ''}
+          originalTitle={(item as Movie).original_title ?? (item as TV).original_name}
           voteAverage={item.vote_average}
           fullData={item}
         />
