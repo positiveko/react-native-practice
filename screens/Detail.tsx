@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect } from 'react';
 import { Dimensions, StyleSheet, Share, Platform } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native';
 import { useQuery } from 'react-query';
 import Loader from '../components/Loader';
 import { Ionicons } from '@expo/vector-icons';
